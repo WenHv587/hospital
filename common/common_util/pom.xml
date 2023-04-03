@@ -11,6 +11,8 @@
 
     <artifactId>common-util</artifactId>
     <version>1.0</version>
+
+    <packaging>jar</packaging>
     <name>common-util</name>
     <description>common-util</description>
 
@@ -41,5 +43,7 @@
             <artifactId>joda-time</artifactId>
         </dependency>
     </dependencies>
+
+
 
 </project>

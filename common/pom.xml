@@ -16,6 +16,7 @@
         <module>common-util</module>
         <module>service-util</module>
         <module>common-util</module>
+        <module>common_util</module>
     </modules>
 
     <dependencies>
