@@ -7,6 +7,7 @@ import edu.cqupt.hospital.model.hosp.HospitalSet;
 import edu.cqupt.hospital.vo.hosp.HospitalSetQueryVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
+@CrossOrigin
 public class HospitalSetController {
 
     @Autowired
@@ -99,7 +101,6 @@ public class HospitalSetController {
     @ApiOperation("根据id查找医院设置信息")
     @GetMapping("hospSets/{id}")
     public Result findHospitalSetById(@PathVariable Long id) {
-        int i =  1 / 0;
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         return Result.ok(hospitalSet);
     }
@@ -146,7 +147,7 @@ public class HospitalSetController {
      * @return
      */
     @ApiOperation("修改医院设置状态（锁定/解锁）")
-    @PutMapping("hosp/{id}/{status}")
+    @PutMapping("hospSets/{id}/{status}")
     public Result setHospitalSetStatus(@PathVariable Long id, @PathVariable Integer status) {
         boolean flag = hospitalSetService.updateHospitalSetStatus(id, status);
         if (flag) {
@@ -163,7 +164,7 @@ public class HospitalSetController {
      * @return
      */
     @ApiOperation("发送医院签名秘钥")
-    @GetMapping("hosp/key/{id}")
+    @GetMapping("hospSets/key/{id}")
     public Result sendKey(@PathVariable Long id) {
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         String signKey = hospitalSet.getSignKey();
